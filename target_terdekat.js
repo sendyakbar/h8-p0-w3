@@ -6,24 +6,27 @@ Jika tidak ditemukan 'x' sama sekali, function akan me-return nilai 0. */
 
 function targetTerdekat(arr) {
     // you can only write your code here!
-    for (var i=0; i<arr.length; i++) {
-        var stp = 0
-        if (arr[i] === 'o') {
-            stp = i
-            for (stp; stp<arr.length; i++) {
-                stp2 = 0
-                if (arr[stp] === 'x') {
-                    stp2 = stp
-                    
-                }return stp2
-            }
-        }
+    var indexO = arr.indexOf('o')
+    var indexX = arr.indexOf('x')
+    var nearDist = arr.length
+    var dist = 0
+    if (indexX === -1) {
+      return 0
     }
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] === 'x') {
+        dist = Math.abs(i - indexO)
+        if (dist < nearDist) {
+          nearDist = dist
+        }
+      }
+    }
+    return nearDist
   }
   
   // TEST CASES
   console.log(targetTerdekat([' ', ' ', 'o', ' ', ' ', 'x', ' ', 'x'])); // 3
-//   console.log(targetTerdekat(['o', ' ', ' ', ' ', 'x', 'x', 'x'])); // 4
-//   console.log(targetTerdekat(['x', ' ', ' ', ' ', 'x', 'x', 'o', ' '])); // 1
-//   console.log(targetTerdekat([' ', ' ', 'o', ' '])); // 0
-//   console.log(targetTerdekat([' ', 'o', ' ', 'x', 'x', ' ', ' ', 'x'])); // 2
+  console.log(targetTerdekat(['o', ' ', ' ', ' ', 'x', 'x', 'x'])); // 4
+  console.log(targetTerdekat(['x', ' ', ' ', ' ', 'x', 'x', 'o', ' '])); // 1
+  console.log(targetTerdekat([' ', ' ', 'o', ' '])); // 0
+  console.log(targetTerdekat([' ', 'o', ' ', 'x', 'x', ' ', ' ', 'x'])); // 2
