@@ -16,9 +16,9 @@ function targetTerdekat(arr) {
     for (var i = 0; i < arr.length; i++) {
       if (arr[i] === 'x') {
         dist = Math.abs(i - indexO)
-        if (dist < nearDist) {
-          nearDist = dist
-        }
+        // if (dist < nearDist) {
+        //   nearDist = dist
+        // }
       }
     }
     return nearDist
